@@ -5,25 +5,27 @@
 }
 
 body{
-	background-color: aliceblue;
+	background-color: aliceblue;/* 白天默认背景颜色 */
 }
 
+/* 最外层元素样式 */
 .components{
-	position:fixed;
+	position:fixed;/* 固定定位 */
 	top: 50%;
 	left:50%;
 	margin-left:-90px;
-	margin-top: -35px;
+	margin-top: -35px;/* 按钮在页面中居中 */
 	width: 180px;
 	height: 70px;
-	background-color: rgba(70, 133, 192,1);
+	background-color: rgba(70, 133, 192,1);/* 按钮背景颜色 */
 	border-radius: 100px;
-	box-shadow: inset 0 0 5px 3px rgba(0, 0, 0, 0.5);
+	box-shadow: inset 0 0 5px 3px rgba(0, 0, 0, 0.5);/* 按钮的内阴影,实现立体感 */
 	overflow: hidden;
 	transition: 0.7s;
-	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);
+	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);/* 过渡时间贝塞尔曲线,实现非线性动画 */
 }
 
+/* 主要按钮样式 */
 .main-button{
 	margin: 7.5px 0 0 7.5px;
 	width: 55px;
@@ -36,6 +38,7 @@ body{
 	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);
 }
 
+/* 陨石坑样式 */
 .moon{
 	box-shadow:inset 0px 0px 1px 1px rgba(0, 0, 0, 0.3) ;
 	border-radius: 50%;
@@ -44,6 +47,7 @@ body{
 	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);
 }
 
+/* 第一个陨石坑 */
 .moon:nth-child(1){
 	position: absolute;
 	top: 7.5px;
@@ -54,6 +58,7 @@ body{
 	
 }
 
+/* 第二个陨石坑 */
 .moon:nth-child(2){
 	position: absolute;
 	top: 20px;
@@ -63,6 +68,7 @@ body{
 	background-color: rgba(150, 160, 180, 1);
 }
 
+/* 第三个陨石坑 */
 .moon:nth-child(3){
 	position: absolute;
 	top: 32.5px;
@@ -72,6 +78,7 @@ body{
 	background-color: rgba(150, 160, 180, 1);
 }
 
+/* 按钮背后的第一个虚影 */
 .daytime-backgrond:nth-child(2){
 	position: absolute;
 	top: -20px;
@@ -84,6 +91,8 @@ body{
 	transition: 0.7s;
 	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);
 }
+
+/* 按钮背后的第二个虚影 */
 .daytime-backgrond:nth-child(3){
 	position: absolute;
 	top: -35px;
@@ -97,6 +106,7 @@ body{
 	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);
 }
 
+/* 按钮背后的第三个虚影 */
 .daytime-backgrond:nth-child(4){
 	position: absolute;
 	top: -45px;
@@ -110,11 +120,13 @@ body{
 	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);
 }
 
+/* 云和云层虚影的动画过渡时间和非线性动画 */
 .cloud,.cloud-light{
 	transition: 0.7s;
 	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);
 }
 
+/* 云和虚影由6个圆形组成，第1个圆形和第7个圆形大小相同 */
 .cloud-son:nth-child(1),.cloud-son:nth-child(7){
 	position: absolute;
 	right: -20px;
@@ -126,6 +138,7 @@ body{
 	z-index: -1;
 }
 
+/* 云和虚影由6个圆形组成，第2个圆形和第8个圆形大小相同 */
 .cloud-son:nth-child(2),.cloud-son:nth-child(8){
 	position: absolute;
 	right: -10px;
@@ -137,6 +150,7 @@ body{
 	z-index: -1;
 }
 
+/* 云和虚影由6个圆形组成，第3个圆形和第9个圆形大小相同 */
 .cloud-son:nth-child(3),.cloud-son:nth-child(9){
 	position: absolute;
 	right: 20px;
@@ -148,6 +162,7 @@ body{
 	z-index: -1;
 }
 
+/* 云和虚影由6个圆形组成，第4个圆形和第10个圆形大小相同 */
 .cloud-son:nth-child(4),.cloud-son:nth-child(10){
 	position: absolute;
 	right: 50px;
@@ -159,6 +174,7 @@ body{
 	z-index: -1;
 }
 
+/* 云和虚影由6个圆形组成，第5个圆形和第11个圆形大小相同 */
 .cloud-son:nth-child(5),.cloud-son:nth-child(11){
 	position: absolute;
 	right: 75px;
@@ -170,6 +186,7 @@ body{
 	z-index: -1;
 }
 
+/* 云和虚影由6个圆形组成，第6个圆形和第12个圆形大小相同 */
 .cloud-son:nth-child(6),.cloud-son:nth-child(12){
 	position: absolute;
 	right: 110px;
@@ -181,10 +198,12 @@ body{
 	z-index: -1;
 }
 
+/* 云层在-2层 */
 .cloud{
 	z-index: -2;
 }
 
+/* 云层虚影在云层下方,并且整体上移,逆时针旋转5度 */
 .cloud-light{
 	position: absolute;
 	right: 0px;
@@ -194,6 +213,7 @@ body{
 	transform: rotate(-5deg);
 }
 
+/* 所有星星样式 */
 .stars{
 	transform: translateY(-125px);
 	z-index: -2;
@@ -201,25 +221,30 @@ body{
 	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);
 }
 
+/* 星星绝对定位 */
 .star{
 	position: absolute;
 }
 
+/* 大星星的宽高 */
 .big{
 	width: 15px;
 	height: 15px;
 }
 
+/* 中星星的宽高 */
 .medium{
 	width: 10px;
 	height: 10px;
 }
 
+/* 小星星的宽高 */
 .small{
 	width: 6px;
 	height: 6px;
 }
 
+/* 所有星星的位置 */
 .star:nth-child(1){
 	top: 10px;
 	left: 40px;	
@@ -275,6 +300,7 @@ body{
 	left: 95px;	
 }
 
+/* 每一个星星由四个div向左浮动,拼合而成 */
 .star-son{
 	float: left;
 }
