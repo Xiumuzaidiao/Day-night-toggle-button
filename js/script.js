@@ -7,6 +7,7 @@
 			var stars = document.querySelector(".stars");//获取所有星星
 			var body = document.querySelector("body");//获取body
 			var isMoved = false;//按钮状态，判断是否白天黑夜,默认为白天
+			var isClicked = false;  // 新变量，用于跟踪是否刚刚发生了鼠标点击事件
 			
 			mainButton.addEventListener("click", function() {
 			  if (isMoved) {
@@ -54,6 +55,44 @@
 				//网页背景颜色变为深色
 				body.style.backgroundColor = "#424242";
 			  }
+			  isClicked = true;
+			    
+			  setTimeout(function() {
+			    isClicked = false;
+			  }, 500);
 			
 			  isMoved = !isMoved;
 			});
+
+           mainButton.addEventListener("mousemove",function () {
+             if (isClicked) return;
+             
+             if (isMoved) {
+               mainButton.style.transform = "translateX(100px)";
+			   daytimeBackgrond[0].style.transform = "translateX(100px)";
+			   daytimeBackgrond[1].style.transform = "translateX(70px)";
+			   daytimeBackgrond[2].style.transform = "translateX(40px)";
+             } else {
+               mainButton.style.transform = "translateX(10px)";
+			   daytimeBackgrond[0].style.transform = "translateX(10px)";
+			   daytimeBackgrond[1].style.transform = "translateX(10px)";
+			   daytimeBackgrond[2].style.transform = "translateX(10px)";
+             }
+           });
+           			
+           mainButton.addEventListener("mouseout",function () {
+             if (isClicked) return;
+             
+             if (isMoved) {
+               mainButton.style.transform = "translateX(110px)";
+			   daytimeBackgrond[0].style.transform = "translateX(110px)";
+			   daytimeBackgrond[1].style.transform = "translateX(80px)";
+			   daytimeBackgrond[2].style.transform = "translateX(50px)";
+             } else {
+               mainButton.style.transform = "translateX(0px)";
+			   daytimeBackgrond[0].style.transform = "translateX(0px)";
+			   daytimeBackgrond[1].style.transform = "translateX(0px)";
+			   daytimeBackgrond[2].style.transform = "translateX(0px)";
+             }
+           });
+
