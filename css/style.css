@@ -34,168 +34,137 @@ body{
 	border-radius: 50%;
 	box-shadow:3px 3px 5px rgba(0, 0, 0, 0.5), inset  -3px -5px 3px -3px rgba(0, 0, 0, 0.5), inset  4px 5px 2px -2px rgba(255, 230, 80,1);
 	cursor: pointer;
-	transition: 0.7s;
-	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);
 }
 
 /* 陨石坑样式 */
 .moon{
+	position: absolute;
+	background-color: rgba(150, 160, 180, 1);
 	box-shadow:inset 0px 0px 1px 1px rgba(0, 0, 0, 0.3) ;
 	border-radius: 50%;
 	transition: 0.5s;
 	opacity: 0;
-	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);
 }
 
 /* 第一个陨石坑 */
 .moon:nth-child(1){
-	position: absolute;
 	top: 7.5px;
 	left: 25px;
 	width: 12.5px;
 	height: 12.5px;
-	background-color: rgba(150, 160, 180, 1);
-	
 }
 
 /* 第二个陨石坑 */
 .moon:nth-child(2){
-	position: absolute;
 	top: 20px;
 	left: 7.5px;
 	width: 20px;
 	height: 20px;
-	background-color: rgba(150, 160, 180, 1);
 }
 
 /* 第三个陨石坑 */
 .moon:nth-child(3){
-	position: absolute;
 	top: 32.5px;
 	left: 32.5px;
 	width: 12.5px;
 	height: 12.5px;
-	background-color: rgba(150, 160, 180, 1);
+}
+
+/* 按钮背后的虚影 */
+.daytime-backgrond {
+	position: absolute;
+	border-radius: 50%;
 }
 
 /* 按钮背后的第一个虚影 */
 .daytime-backgrond:nth-child(2){
-	position: absolute;
 	top: -20px;
 	left: -20px;
 	width: 110px;
 	height:110px;
 	background-color: rgba(255, 255, 255,0.2);
-	border-radius: 50%;
 	z-index: -2;
-	transition: 0.7s;
-	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);
 }
 
 /* 按钮背后的第二个虚影 */
 .daytime-backgrond:nth-child(3){
-	position: absolute;
-	top: -35px;
-	left: -15px;
+	top: -32.5px;
+	left: -17.5px;
 	width: 135px;
 	height:135px;
 	background-color: rgba(255, 255, 255,0.1);
-	border-radius: 50%;
 	z-index: -3;
-	transition: 0.7s;
-	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);
 }
 
 /* 按钮背后的第三个虚影 */
 .daytime-backgrond:nth-child(4){
-	position: absolute;
 	top: -45px;
 	left: -15px;
 	width: 160px;
 	height:160px;
 	background-color: rgba(255, 255, 255,0.05);
-	border-radius: 50%;
 	z-index: -4;
-	transition: 0.7s;
-	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);
 }
 
-/* 云和云层虚影的动画过渡时间和非线性动画 */
+/* 云和云层虚影的初始位置 */
 .cloud,.cloud-light{
-	transition: 0.7s;
-	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);
+	transform: translateY(10px);
+}
+
+/* 云和虚影统一样式 */
+.cloud-son{
+	position: absolute;
+	background-color: #fff;
+	border-radius: 50%;
+	z-index: -1;
 }
 
 /* 云和虚影由6个圆形组成，第1个圆形和第7个圆形大小相同 */
-.cloud-son:nth-child(1),.cloud-son:nth-child(7){
-	position: absolute;
+.cloud-son:nth-child(6n+1){
 	right: -20px;
 	bottom: 10px;
 	width: 50px;
 	height: 50px;
-	background-color: #fff;
-	border-radius: 50%;
-	z-index: -1;
 }
 
 /* 云和虚影由6个圆形组成，第2个圆形和第8个圆形大小相同 */
-.cloud-son:nth-child(2),.cloud-son:nth-child(8){
-	position: absolute;
+.cloud-son:nth-child(6n+2) {
 	right: -10px;
 	bottom: -25px;
 	width: 60px;
 	height: 60px;
-	background-color: #fff;
-	border-radius: 50%;
-	z-index: -1;
 }
 
 /* 云和虚影由6个圆形组成，第3个圆形和第9个圆形大小相同 */
-.cloud-son:nth-child(3),.cloud-son:nth-child(9){
-	position: absolute;
+.cloud-son:nth-child(6n+3) {
 	right: 20px;
 	bottom: -40px;
 	width: 60px;
 	height: 60px;
-	background-color: #fff;
-	border-radius: 50%;
-	z-index: -1;
 }
 
 /* 云和虚影由6个圆形组成，第4个圆形和第10个圆形大小相同 */
-.cloud-son:nth-child(4),.cloud-son:nth-child(10){
-	position: absolute;
+.cloud-son:nth-child(6n+4) {
 	right: 50px;
 	bottom: -35px;
 	width: 60px;
 	height: 60px;
-	background-color: #fff;
-	border-radius: 50%;
-	z-index: -1;
 }
 
 /* 云和虚影由6个圆形组成，第5个圆形和第11个圆形大小相同 */
-.cloud-son:nth-child(5),.cloud-son:nth-child(11){
-	position: absolute;
+.cloud-son:nth-child(6n+5) {
 	right: 75px;
 	bottom: -60px;
 	width: 75px;
 	height: 75px;
-	background-color: #fff;
-	border-radius: 50%;
-	z-index: -1;
 }
 
 /* 云和虚影由6个圆形组成，第6个圆形和第12个圆形大小相同 */
-.cloud-son:nth-child(6),.cloud-son:nth-child(12){
-	position: absolute;
+.cloud-son:nth-child(6n+6) {
 	right: 110px;
 	bottom: -50px;
 	width: 60px;
 	height: 60px;
-	background-color: #fff;
-	border-radius: 50%;
-	z-index: -1;
 }
 
 /* 云层在-2层 */
@@ -210,38 +179,35 @@ body{
 	bottom: 25px;
 	opacity: 0.5;
 	z-index: -3;
-	transform: rotate(-5deg);
+	/*transform: rotate(-5deg);*/
 }
 
 /* 所有星星样式 */
 .stars{
 	transform: translateY(-125px);
 	z-index: -2;
-	transition: 0.7s;
-	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);
-}
-
-/* 星星绝对定位 */
-.star{
-	position: absolute;
 }
 
 /* 大星星的宽高 */
-.big{
-	width: 15px;
-	height: 15px;
+.big {
+	--size: 7.5px;
 }
 
 /* 中星星的宽高 */
-.medium{
-	width: 10px;
-	height: 10px;
+.medium {
+	--size: 5px;
 }
 
 /* 小星星的宽高 */
-.small{
-	width: 6px;
-	height: 6px;
+.small {
+	--size: 3px;
+}
+
+/* 星星绝对定位 */
+.star {
+	position: absolute;
+	width: calc(2*var(--size));
+	height: calc(2*var(--size));
 }
 
 /* 所有星星的位置 */
@@ -305,77 +271,25 @@ body{
 	float: left;
 }
 
-/* 大星星 */
-.big .star-son:nth-child(1){
-	width: 7.5px;
-	height: 7.5px;
-	background-image: radial-gradient(circle 7.5px at left 0, transparent 7.5px, #fff);
+.star-son:nth-child(1) {
+	--pos: left 0;
 }
 
-.big .star-son:nth-child(2){
-	width: 7.5px;
-	height: 7.5px;
-	background-image: radial-gradient(circle 7.5px at right 0, transparent 7.5px, #fff);
+.star-son:nth-child(2) {
+	--pos: right 0;
 }
 
-.big .star-son:nth-child(3){
-	width: 7.5px;
-	height: 7.5px;
-	background-image: radial-gradient(circle 7.5px at 0 bottom, transparent 7.5px, #fff);
+.star-son:nth-child(3) {
+	--pos: 0 bottom;
 }
 
-.big .star-son:nth-child(4){
-	width: 7.5px;
-	height: 7.5px;
-	background-image: radial-gradient(circle 7.5px at right bottom, transparent 7.5px, #fff);
+.star-son:nth-child(4) {
+	--pos: right bottom;
 }
 
-/* 中星星 */
-.medium .star-son:nth-child(1){
-	width: 5px;
-	height: 5px;
-	background-image: radial-gradient(circle 5px at left 0, transparent 5px, #fff);
-}
-
-.medium .star-son:nth-child(2){
-	width: 5px;
-	height: 5px;
-	background-image: radial-gradient(circle 5px at right 0, transparent 5px, #fff);
-}
-
-.medium .star-son:nth-child(3){
-	width: 5px;
-	height: 5px;
-	background-image: radial-gradient(circle 5px at 0 bottom, transparent 5px, #fff);
-}
-
-.medium .star-son:nth-child(4){
-	width: 5px;
-	height: 5px;
-	background-image: radial-gradient(circle 5px at right bottom, transparent 5px, #fff);
-}
-
-/* 小星星 */
-.small .star-son:nth-child(1){
-	width: 3px;
-	height: 3px;
-	background-image: radial-gradient(circle 3px at left 0, transparent 3px, #fff);
-}
-
-.small .star-son:nth-child(2){
-	width: 3px;
-	height: 3px;
-	background-image: radial-gradient(circle 3px at right 0, transparent 3px, #fff);
-}
-
-.small .star-son:nth-child(3){
-	width: 3px;
-	height: 3px;
-	background-image: radial-gradient(circle 3px at 0 bottom, transparent 3px, #fff);
-}
-
-.small .star-son:nth-child(4){
-	width: 3px;
-	height: 3px;
-	background-image: radial-gradient(circle 3px at right bottom, transparent 3px, #fff);
+/* 星星 */
+.star-son {
+	width: var(--size);
+	height: var(--size);
+	background-image: radial-gradient(circle var(--size) at var(--pos), transparent var(--size), #fff);
 }
