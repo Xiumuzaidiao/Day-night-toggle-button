@@ -182,6 +182,16 @@ body{
 	/*transform: rotate(-5deg);*/
 }
 
+@keyframes float-animation {
+	0% { transform: translateY(0); }
+	50% { transform: translateY(-5px); }
+	100% { transform: translateY(0); }
+}
+
+.cloud-float {
+	animation: float-animation 2s infinite;
+}
+
 /* 所有星星样式 */
 .stars{
 	transform: translateY(-125px);
@@ -292,4 +302,15 @@ body{
 	width: var(--size);
 	height: var(--size);
 	background-image: radial-gradient(circle var(--size) at var(--pos), transparent var(--size), #fff);
+}
+
+/* 将星星闪烁动画应用于所有的star元素 */
+.star{
+	transform: scale(1);
+    transition: transform 0.5s;
+}
+
+/* 添加星星闪烁动画 */
+.twinkle {
+     transform: scale(0);
 }
