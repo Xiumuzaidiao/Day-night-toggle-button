@@ -22,7 +22,7 @@ body{
 	box-shadow: inset 0 0 5px 3px rgba(0, 0, 0, 0.5);/* 按钮的内阴影,实现立体感 */
 	overflow: hidden;
 	transition: 0.7s;
-	transition-timing-function: cubic-bezier( 0,0.5, 1.3,1);/* 过渡时间贝塞尔曲线,实现非线性动画 */
+	transition-timing-function: cubic-bezier( 0,0.5, 1,1);/* 过渡时间贝塞尔曲线,实现非线性动画 */
 }
 
 /* 主要按钮样式 */
@@ -34,6 +34,8 @@ body{
 	border-radius: 50%;
 	box-shadow:3px 3px 5px rgba(0, 0, 0, 0.5), inset  -3px -5px 3px -3px rgba(0, 0, 0, 0.5), inset  4px 5px 2px -2px rgba(255, 230, 80,1);
 	cursor: pointer;
+	transition: 1.0s;
+	transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); /* 加入回弹动画 */
 }
 
 /* 陨石坑样式 */
@@ -74,6 +76,8 @@ body{
 .daytime-backgrond {
 	position: absolute;
 	border-radius: 50%;
+	transition: 1.0s;
+	transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); /* 加入回弹动画 */
 }
 
 /* 按钮背后的第一个虚影 */
@@ -109,6 +113,8 @@ body{
 /* 云和云层虚影的初始位置 */
 .cloud,.cloud-light{
 	transform: translateY(10px);
+	transition: 1.0s;
+	transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); /* 加入回弹动画 */
 }
 
 /* 云和虚影统一样式 */
@@ -117,7 +123,10 @@ body{
 	background-color: #fff;
 	border-radius: 50%;
 	z-index: -1;
+	transition-property: transform;
+	transition-duration: 6s; /* 云层浮动动画效果，过渡时间6s */
 }
+
 
 /* 云和虚影由6个圆形组成，第1个圆形和第7个圆形大小相同 */
 .cloud-son:nth-child(6n+1){
@@ -182,20 +191,13 @@ body{
 	/*transform: rotate(-5deg);*/
 }
 
-@keyframes float-animation {
-	0% { transform: translateY(0); }
-	50% { transform: translateY(-5px); }
-	100% { transform: translateY(0); }
-}
-
-.cloud-float {
-	animation: float-animation 2s infinite;
-}
 
 /* 所有星星样式 */
 .stars{
 	transform: translateY(-125px);
 	z-index: -2;
+	transition: 1.0s;
+	transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); /* 加入回弹动画 */
 }
 
 /* 大星星的宽高 */
