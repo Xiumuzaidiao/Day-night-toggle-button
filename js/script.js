@@ -55,44 +55,82 @@
 				//网页背景颜色变为深色
 				body.style.backgroundColor = "#424242";
 			  }
+			  // 检测鼠标是否点击,默认已经点击
 			  isClicked = true;
-			    
+			  // 计时器，当0.5秒后，点击状态变成非点击
 			  setTimeout(function() {
 			    isClicked = false;
 			  }, 500);
-			
 			  isMoved = !isMoved;
 			});
-
+           
+		   // 当鼠标挪入按钮时，按钮移动事件
            mainButton.addEventListener("mousemove",function () {
-             if (isClicked) return;
-             
+             // 当按钮为点击状态时，退出
+			 if (isClicked) return;
+			 
              if (isMoved) {
+			   // 当黑夜状态时，鼠标挪入按钮
+			   // 按钮和背后的虚影向左平移10像素 
                mainButton.style.transform = "translateX(100px)";
 			   daytimeBackgrond[0].style.transform = "translateX(100px)";
 			   daytimeBackgrond[1].style.transform = "translateX(70px)";
 			   daytimeBackgrond[2].style.transform = "translateX(40px)";
              } else {
+			   // 当白天状态时，鼠标挪入按钮
+			   // 按钮和背后的虚影向右平移10像素 
                mainButton.style.transform = "translateX(10px)";
 			   daytimeBackgrond[0].style.transform = "translateX(10px)";
 			   daytimeBackgrond[1].style.transform = "translateX(10px)";
 			   daytimeBackgrond[2].style.transform = "translateX(10px)";
              }
            });
-           			
+           	
+		   // 当鼠标挪出按钮时，按钮移动事件
            mainButton.addEventListener("mouseout",function () {
-             if (isClicked) return;
-             
+			 // 当按钮为点击状态时，退出
+             if (isClicked) {return};
              if (isMoved) {
+			   // 当黑夜状态时，鼠标挪出按钮
+			   // 按钮和背后的虚影向右平移10像素 
                mainButton.style.transform = "translateX(110px)";
 			   daytimeBackgrond[0].style.transform = "translateX(110px)";
 			   daytimeBackgrond[1].style.transform = "translateX(80px)";
 			   daytimeBackgrond[2].style.transform = "translateX(50px)";
              } else {
+			   // 当白天状态时，鼠标挪出按钮
+			   // 按钮和背后的虚影向左平移10像素 
                mainButton.style.transform = "translateX(0px)";
 			   daytimeBackgrond[0].style.transform = "translateX(0px)";
 			   daytimeBackgrond[1].style.transform = "translateX(0px)";
 			   daytimeBackgrond[2].style.transform = "translateX(0px)";
              }
            });
-
+		   
+		   // 星星闪烁js交互部分
+		   // 获取所有星星元素
+		   var star = document.querySelectorAll('.star');
+		   
+		   // 将星星元素转换为数组
+		   var starArray = Array.prototype.slice.call(star);
+		   
+		   // 随机排序星星元素数组
+		   starArray.sort(function() {
+		     return 0.5 - Math.random();
+		   });
+		   
+		   // 定义缩放动画时长和暂停时间
+		   var twinkleDuration = 0.5; // 缩放动画时长（秒）
+		   var pauseDuration = 2; // 暂停时间（秒）
+		   
+		   // 依次延迟添加动画类
+		   starArray.forEach(function(star, index) {
+		     setTimeout(function() {
+		       star.classList.add('twinkle');
+		       setTimeout(function() {
+		         star.classList.remove('twinkle');
+		       }, twinkleDuration * 1000);
+		     }, (index * (twinkleDuration + pauseDuration)) * 1000);
+		   });
+		   
+		   
