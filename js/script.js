@@ -118,12 +118,48 @@ let starArray = [...$('.star')].sort(_ => 0.5 - Math.random());
 const twinkleDuration = 0.5; // 缩放动画时长（秒）
 const pauseDuration = 2; // 暂停时间（秒）
 
-// 依次延迟添加动画类
-starArray.forEach(function(star, index) {
-  setTimeout(function() {
-    star.classList.add('twinkle');
-    setTimeout(function() {
-      star.classList.remove('twinkle');
-    }, twinkleDuration * 1000);
-  }, (index * (twinkleDuration + pauseDuration)) * 1000);
+function twinkleStars() {
+  starArray.forEach((star, index) => {
+    setTimeout(() => {
+      star.classList.add('twinkle');
+      setTimeout(() => {
+        star.classList.remove('twinkle');
+        if (index === starArray.length - 1) {
+          setTimeout(twinkleStars, pauseDuration * 1000); // 在每次调用之间添加 2 秒的间隔
+        }
+      }, twinkleDuration * 1000);
+    }, (index * (twinkleDuration + pauseDuration)) * 1000);
+  });
+}
+
+twinkleStars(); // 第一次调用函数开始闪烁
+
+// 云层浮动动画效果
+// 定义一个获取随机方向的函数，随机选择'2px'或'-2px'
+const getRandomDirection = () => {
+  const directions = ['2px', '-2px'];
+  return directions[Math.floor(Math.random() * directions.length)];
+}
+
+// 定义一个将元素移动到随机方向的函数
+const moveElementRandomly = (element) => {
+  const randomDirectionX = getRandomDirection(); // 获取随机的X方向
+  const randomDirectionY = getRandomDirection(); // 获取随机的Y方向
+  element.style.transform = `translate(${randomDirectionX}, ${randomDirectionY})`; // 将随机方向应用到元素的transform属性
+}
+
+// 在文档加载完成后执行以下代码
+document.addEventListener('DOMContentLoaded', () => {
+  const cloudSons = document.querySelectorAll('.cloud-son'); // 选择所有的.cloud-son元素
+  
+  // 每秒钟执行一次以下代码
+  setInterval(() => {
+    cloudSons.forEach(moveElementRandomly); // 将每一个.cloud-son元素移动到随机方向
+  }, 1000);
 });
+
+
+
+
+
+
