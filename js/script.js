@@ -1,13 +1,16 @@
-var mainButton = document.querySelector(".main-button"); //获取按钮主体
-var daytimeBackgrond = document.getElementsByClassName("daytime-backgrond"); //获取按钮背后的虚影
-var cloud = document.querySelector(".cloud"); //获取云层
-var cloudLight = document.querySelector(".cloud-light"); //获取云层虚影
-var components = document.querySelector(".components"); //获取最外层元素
-var moon = document.getElementsByClassName("moon"); //获取陨石坑
-var stars = document.querySelector(".stars"); //获取所有星星
-var body = document.querySelector("body"); //获取body
-var isMoved = false; //按钮状态，判断是否白天黑夜,默认为白天
-var isClicked = false; // 新变量，用于跟踪是否刚刚发生了鼠标点击事件
+const $ = s => {
+  let dom = document.querySelectorAll(s)
+  return dom.length == 1 ? dom[0] : dom
+}
+let mainButton = $(".main-button"); //获取按钮主体
+let daytimeBackgrond = $(".daytime-backgrond"); //获取按钮背后的虚影
+let cloud = $(".cloud"); //获取云层
+let cloudLight = $(".cloud-light"); //获取云层虚影
+let components = $(".components"); //获取最外层元素
+let moon = $(".moon"); //获取陨石坑
+let stars = $(".stars"); //获取所有星星
+let isMoved = false; //按钮状态，判断是否白天黑夜,默认为白天
+let isClicked = false; // 新变量，用于跟踪是否刚刚发生了鼠标点击事件
 
 mainButton.addEventListener("click", function() {
   if (isMoved) {
@@ -31,7 +34,7 @@ mainButton.addEventListener("click", function() {
     stars.style.transform = "translateY(-125px)";
     stars.style.opacity = "0";
     //网页背景颜色变为浅色
-    body.style.backgroundColor = "aliceblue";
+    document.body.style.backgroundColor = "aliceblue";
   } else {
     //黑夜按钮样式
     mainButton.style.transform = "translateX(110px)"; //水平平移距离为110px
@@ -53,7 +56,7 @@ mainButton.addEventListener("click", function() {
     stars.style.transform = "translateY(-62.5px)";
     stars.style.opacity = "1";
     //网页背景颜色变为深色
-    body.style.backgroundColor = "#424242";
+    document.body.style.backgroundColor = "#424242";
   }
   // 检测鼠标是否点击,默认已经点击
   isClicked = true;
@@ -74,15 +77,15 @@ mainButton.addEventListener("mousemove", function() {
     // 按钮和背后的虚影向左平移10像素 
     mainButton.style.transform = "translateX(100px)";
     daytimeBackgrond[0].style.transform = "translateX(100px)";
-    daytimeBackgrond[1].style.transform = "translateX(70px)";
-    daytimeBackgrond[2].style.transform = "translateX(40px)";
+    daytimeBackgrond[1].style.transform = "translateX(73px)";
+    daytimeBackgrond[2].style.transform = "translateX(46px)";
   } else {
     // 当白天状态时，鼠标挪入按钮
     // 按钮和背后的虚影向右平移10像素 
     mainButton.style.transform = "translateX(10px)";
     daytimeBackgrond[0].style.transform = "translateX(10px)";
-    daytimeBackgrond[1].style.transform = "translateX(10px)";
-    daytimeBackgrond[2].style.transform = "translateX(10px)";
+    daytimeBackgrond[1].style.transform = "translateX(7px)";
+    daytimeBackgrond[2].style.transform = "translateX(4px)";
   }
 });
 
@@ -108,20 +111,12 @@ mainButton.addEventListener("mouseout", function() {
 });
 
 // 星星闪烁js交互部分
-// 获取所有星星元素
-var star = document.querySelectorAll('.star');
-
-// 将星星元素转换为数组
-var starArray = Array.prototype.slice.call(star);
-
-// 随机排序星星元素数组
-starArray.sort(function() {
-  return 0.5 - Math.random();
-});
+// 获取所有星星元素，并随机排序星星数组
+let starArray = [...$('.star')].sort(_ => 0.5 - Math.random());
 
 // 定义缩放动画时长和暂停时间
-var twinkleDuration = 0.5; // 缩放动画时长（秒）
-var pauseDuration = 2; // 暂停时间（秒）
+const twinkleDuration = 0.5; // 缩放动画时长（秒）
+const pauseDuration = 2; // 暂停时间（秒）
 
 // 依次延迟添加动画类
 starArray.forEach(function(star, index) {
