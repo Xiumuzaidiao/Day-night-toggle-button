@@ -299,7 +299,7 @@ body{
 	--pos: right bottom;
 }
 
-/* 星星 */
+/* 星星样式 */
 .star-son {
 	width: var(--size);
 	height: var(--size);
