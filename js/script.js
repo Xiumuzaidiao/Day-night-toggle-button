@@ -135,7 +135,7 @@ function twinkleStars() {
 twinkleStars(); // 第一次调用函数开始闪烁
 
 // 云层浮动动画效果
-// 定义一个获取随机方向的函数，随机选择'2px'或'-2px'
+// 定义一个获取随机方向的函数，随机选择移动距离'2px'或'-2px'
 const getRandomDirection = () => {
   const directions = ['2px', '-2px'];
   return directions[Math.floor(Math.random() * directions.length)];
