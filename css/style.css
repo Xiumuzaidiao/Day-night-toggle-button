@@ -17,12 +17,12 @@ body{
 	margin-top: -35px;/* 按钮在页面中居中 */
 	width: 180px;
 	height: 70px;
-	background-color: rgba(70, 133, 192,1);/* 按钮背景颜色 */
+	background-color: rgba(70， 133， 192，1);/* 按钮背景颜色 */
 	border-radius: 100px;
-	box-shadow: inset 0 0 5px 3px rgba(0, 0, 0, 0.5);/* 按钮的内阴影,实现立体感 */
+	box-shadow: inset 0 0 5px 3px rgba(0， 0， 0， 0.5);/* 按钮的内阴影,实现立体感 */
 	overflow: hidden;
 	transition: 0.7s;
-	transition-timing-function: cubic-bezier( 0,0.5, 1,1);/* 过渡时间贝塞尔曲线,实现非线性动画 */
+	transition-timing-function: cubic-bezier( 0，0.5， 1，1);/* 过渡时间贝塞尔曲线,实现非线性动画 */
 }
 
 /* 主要按钮样式 */
@@ -30,19 +30,19 @@ body{
 	margin: 7.5px 0 0 7.5px;
 	width: 55px;
 	height:55px;
-	background-color: rgba(255, 195, 35,1);
+	background-color: rgba(255， 195， 35，1);
 	border-radius: 50%;
-	box-shadow:3px 3px 5px rgba(0, 0, 0, 0.5), inset  -3px -5px 3px -3px rgba(0, 0, 0, 0.5), inset  4px 5px 2px -2px rgba(255, 230, 80,1);
+	box-shadow:3px 3px 5px rgba(0， 0， 0， 0.5)， inset  -3px -5px 3px -3px rgba(0， 0， 0， 0.5)， inset  4px 5px 2px -2px rgba(255， 230， 80，1);
 	cursor: pointer;
 	transition: 1.0s;
-	transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); /* 加入回弹动画 */
+	transition-timing-function: cubic-bezier(0.56， 1.35， 0.52， 1.00); /* 加入回弹动画 */
 }
 
 /* 陨石坑样式 */
 .moon{
 	position: absolute;
-	background-color: rgba(150, 160, 180, 1);
-	box-shadow:inset 0px 0px 1px 1px rgba(0, 0, 0, 0.3) ;
+	background-color: rgba(150， 160， 180， 1);
+	box-shadow:inset 0px 0px 1px 1px rgba(0， 0， 0， 0.3) ;
 	border-radius: 50%;
 	transition: 0.5s;
 	opacity: 0;
@@ -77,7 +77,7 @@ body{
 	position: absolute;
 	border-radius: 50%;
 	transition: 1.0s;
-	transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); /* 加入回弹动画 */
+	transition-timing-function: cubic-bezier(0.56， 1.35， 0.52， 1.00); /* 加入回弹动画 */
 }
 
 /* 按钮背后的第一个虚影 */
@@ -86,7 +86,7 @@ body{
 	left: -20px;
 	width: 110px;
 	height:110px;
-	background-color: rgba(255, 255, 255,0.2);
+	background-color: rgba(255， 255， 255，0.2);
 	z-index: -2;
 }
 
@@ -96,7 +96,7 @@ body{
 	left: -17.5px;
 	width: 135px;
 	height:135px;
-	background-color: rgba(255, 255, 255,0.1);
+	background-color: rgba(255， 255， 255，0.1);
 	z-index: -3;
 }
 
@@ -106,7 +106,7 @@ body{
 	left: -15px;
 	width: 160px;
 	height:160px;
-	background-color: rgba(255, 255, 255,0.05);
+	background-color: rgba(255， 255， 255，0.05);
 	z-index: -4;
 }
 
@@ -197,7 +197,7 @@ body{
 	transform: translateY(-125px);
 	z-index: -2;
 	transition: 1.0s;
-	transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); /* 加入回弹动画 */
+	transition-timing-function: cubic-bezier(0.56， 1.35， 0.52， 1.00); /* 加入回弹动画 */
 }
 
 /* 大星星的宽高 */
@@ -224,58 +224,33 @@ body{
 
 /* 所有星星的位置 */
 .star:nth-child(1){
-	top: 10px;
-	left: 40px;	
+	top: 11px;
+	left: 39px;	
 }
 
 .star:nth-child(2){
-	top: 20px;
-	left: 95px;	
+	top: 39px;
+	left: 91px;	
 }
 
 .star:nth-child(3){
-	top: 20px;
-	left: 20px;	
+	top: 26px;
+	left: 19px;	
 }
 
 .star:nth-child(4){
-	top: 35px;
-	left: 50px;	
+	top: 37px;
+	left: 66px;	
 }
 
 .star:nth-child(5){
-	top: 50px;
-	left: 80px;	
-}
-
-.star:nth-child(6){
-	top: 50px;
-	left: 20px;	
-}
-
-.star:nth-child(7){
-	top: 40px;
-	left: 27.5px;	
-}
-
-.star:nth-child(8){
-	top: 55px;
-	left: 45px;	
-}
-
-.star:nth-child(9){
-	top: 20px;
+	top: 21px;
 	left: 75px;	
 }
 
-.star:nth-child(10){
-	top: 32.5px;
-	left: 67.5px;	
-}
-
-.star:nth-child(11){
-	top:40px;
-	left: 95px;	
+.star:nth-child(6){
+	top: 51px;
+	left: 38px;	
 }
 
 /* 每一个星星由四个div向左浮动,拼合而成 */
@@ -303,13 +278,14 @@ body{
 .star-son {
 	width: var(--size);
 	height: var(--size);
-	background-image: radial-gradient(circle var(--size) at var(--pos), transparent var(--size), #fff);
+	background-image: radial-gradient(circle var(--size) at var(--pos)， transparent var(--size), #fff);
 }
 
 /* 将星星闪烁动画应用于所有的star元素 */
 .star{
 	transform: scale(1);
-    transition: transform 0.5s;
+    transition: transform 1s;
+	transition-timing-function: cubic-bezier(0.56， 1.35， 0.52， 1.00); /* 加入回弹动画 */
 }
 
 /* 添加星星闪烁动画 */
