@@ -123,8 +123,7 @@ body{
 	background-color: #fff;
 	border-radius: 50%;
 	z-index: -1;
-	transition-property: transform;
-	transition-duration: 6s; /* 云层浮动动画效果，过渡时间6s */
+	transition: transform 6s,right 1s,bottom 1s;
 }
 
 
@@ -224,58 +223,59 @@ body{
 
 /* 所有星星的位置 */
 .star:nth-child(1){
-	top: 10px;
-	left: 40px;	
+	top: 11px;
+	left: 39px;	
+	animation-name: star;
+	animation-duration: 3.5s;
 }
 
 .star:nth-child(2){
-	top: 20px;
-	left: 95px;	
+	top: 39px;
+	left: 91px;	
+	animation-name: star;
+	animation-duration: 4.1s;
+
 }
 
 .star:nth-child(3){
-	top: 20px;
-	left: 20px;	
+	top: 26px;
+	left: 19px;	
+	animation-name: star;
+	animation-duration: 4.9s;
+
 }
 
 .star:nth-child(4){
-	top: 35px;
-	left: 50px;	
+	top: 37px;
+	left: 66px;	
+	animation-name: star;
+	animation-duration: 5.3s;
+
 }
 
 .star:nth-child(5){
-	top: 50px;
-	left: 80px;	
+	top: 21px;
+	left: 75px;	
+	animation-name: star;
+	animation-duration: 3s;
+
 }
 
 .star:nth-child(6){
-	top: 50px;
-	left: 20px;	
+	top: 51px;
+	left: 38px;	
+	animation-name: star;
+	animation-duration: 2.2s;
+
 }
 
-.star:nth-child(7){
-	top: 40px;
-	left: 27.5px;	
-}
-
-.star:nth-child(8){
-	top: 55px;
-	left: 45px;	
-}
-
-.star:nth-child(9){
-	top: 20px;
-	left: 75px;	
-}
-
-.star:nth-child(10){
-	top: 32.5px;
-	left: 67.5px;	
-}
-
-.star:nth-child(11){
-	top:40px;
-	left: 95px;	
+@keyframes star {
+	0%,20%{
+		transform: scale(0);
+	}
+	20%,100% {
+		transform: scale(1);
+	}
 }
 
 /* 每一个星星由四个div向左浮动,拼合而成 */
@@ -299,7 +299,7 @@ body{
 	--pos: right bottom;
 }
 
-/* 星星样式 */
+/* 星星 */
 .star-son {
 	width: var(--size);
 	height: var(--size);
@@ -309,7 +309,13 @@ body{
 /* 将星星闪烁动画应用于所有的star元素 */
 .star{
 	transform: scale(1);
-    transition: transform 0.5s;
+	transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); /* 加入回弹动画 */
+    transition: 1s;
+	/* 无限次重复动画 */
+	animation-iteration-count:infinite;
+	/* 动画在每个循环中正反交替播放 */
+	animation-direction: alternate;
+	animation-timing-function: linear;
 }
 
 /* 添加星星闪烁动画 */
