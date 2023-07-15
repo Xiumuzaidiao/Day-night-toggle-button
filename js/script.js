@@ -1,253 +1,228 @@
-const $ = s => {
-  let dom = document.querySelectorAll(s)
-  return dom.length == 1 ? dom[0] : dom
-}
-let mainButton = $(".main-button"); //获取按钮主体
-let daytimeBackgrond = $(".daytime-backgrond"); //获取按钮背后的虚影
-let cloud = $(".cloud"); //获取云层
-let cloudList = $(".cloud-son"); //获取全部云
-let cloudLight = $(".cloud-light"); //获取云层虚影
-let components = $(".components"); //获取最外层元素
-let moon = $(".moon"); //获取陨石坑
-let stars = $(".stars"); //获取所有星星
-let star = $(".star"); //获取每个星星
-let isMoved = false; //按钮状态，判断是否白天黑夜,默认为白天
-let isClicked = false; // 新变量，用于跟踪是否刚刚发生了鼠标点击事件
+(() => {
+  const func = (root, initTheme, changeTheme) => {
+    const $ = (s) => {
+      let dom = root.querySelectorAll(s);
+      return dom.length == 1 ? dom[0] : dom;
+    };
+    let mainButton = $(".main-button");
+    let daytimeBackgrond = $(".daytime-backgrond");
+    let cloud = $(".cloud");
+    let cloudList = $(".cloud-son");
+    let cloudLight = $(".cloud-light");
+    let components = $(".components");
+    let moon = $(".moon");
+    let stars = $(".stars");
+    let star = $(".star");
+    let isMoved = false;
+    let isClicked = false;
 
-mainButton.addEventListener("click", function() {
-  if (isMoved) {
-    //白天按钮样式
-    mainButton.style.transform = "translateX(0)"; //水平平移距离为0px
-    mainButton.style.backgroundColor = "rgba(255, 195, 35,1)"; //按钮主体的背景颜色变为黄色(太阳)
-    // 盒子阴影
-    mainButton.style.boxShadow = "3px 3px 5px rgba(0, 0, 0, 0.5), inset  -3px -5px 3px -3px rgba(0, 0, 0, 0.5), inset  4px 5px 2px -2px rgba(255, 230, 80,1)";
-    //云朵上升-云朵显示
-    daytimeBackgrond[0].style.transform = "translateX(0)";
-    daytimeBackgrond[1].style.transform = "translateX(0)";
-    daytimeBackgrond[2].style.transform = "translateX(0)";
-    cloud.style.transform = "translateY(10px)";
-    cloudLight.style.transform = "translateY(10px)";
-    components.style.backgroundColor = "rgba(70, 133, 192,1)"
-    //月亮陨石坑完全透明-隐藏
-    moon[0].style.opacity = "0";
-    moon[1].style.opacity = "0";
-    moon[2].style.opacity = "0";
-    //星星上升-星星隐藏
-    stars.style.transform = "translateY(-125px)";
-    stars.style.opacity = "0";
-    //网页背景颜色变为浅色
-    document.body.style.backgroundColor = "aliceblue";
-    // 打开云朵定时器
-    // openOrCloseTime(cloudTimer)
-  } else {
-    //黑夜按钮样式
-    mainButton.style.transform = "translateX(110px)"; //水平平移距离为110px
-    mainButton.style.backgroundColor = "rgba(195, 200,210,1)"; //按钮主体的背景颜色变为黄色(月亮)
-    // 盒子阴影
-    mainButton.style.boxShadow = "3px 3px 5px rgba(0, 0, 0, 0.5), inset  -3px -5px 3px -3px rgba(0, 0, 0, 0.5), inset  4px 5px 2px -2px rgba(255, 255, 210,1)";
-    //云朵下降-云朵隐藏
-    daytimeBackgrond[0].style.transform = "translateX(110px)";
-    daytimeBackgrond[1].style.transform = "translateX(80px)";
-    daytimeBackgrond[2].style.transform = "translateX(50px)";
-    cloud.style.transform = "translateY(80px)";
-    cloudLight.style.transform = "translateY(80px)";
-    components.style.backgroundColor = "rgba(25,30,50,1)"
-    //月亮陨石坑完全不透明-显示
-    moon[0].style.opacity = "1";
-    moon[1].style.opacity = "1";
-    moon[2].style.opacity = "1";
-    //星星下降-星星显示
-    stars.style.transform = "translateY(-62.5px)";
-    stars.style.opacity = "1";
-    //网页背景颜色变为深色
-    document.body.style.backgroundColor = "#424242";
+    components.onclick = () => {
+      if (isMoved) {
+        mainButton.style.transform = "translateX(0)";
+        mainButton.style.backgroundColor = "rgba(255, 195, 35,1)";
+
+        mainButton.style.boxShadow =
+          "3em 3em 5em rgba(0, 0, 0, 0.5), inset  -3em -5em 3em -3em rgba(0, 0, 0, 0.5), inset  4em 5em 2em -2em rgba(255, 230, 80,1)";
+
+        daytimeBackgrond[0].style.transform = "translateX(0)";
+        daytimeBackgrond[1].style.transform = "translateX(0)";
+        daytimeBackgrond[2].style.transform = "translateX(0)";
+        cloud.style.transform = "translateY(10em)";
+        cloudLight.style.transform = "translateY(10em)";
+        components.style.backgroundColor = "rgba(70, 133, 192,1)";
+
+        moon[0].style.opacity = "0";
+        moon[1].style.opacity = "0";
+        moon[2].style.opacity = "0";
+
+        stars.style.transform = "translateY(-125em)";
+        stars.style.opacity = "0";
+
+        changeTheme("light");
+      } else {
+        mainButton.style.transform = "translateX(110em)";
+        mainButton.style.backgroundColor = "rgba(195, 200,210,1)";
+
+        mainButton.style.boxShadow =
+          "3em 3em 5em rgba(0, 0, 0, 0.5), inset  -3em -5em 3em -3em rgba(0, 0, 0, 0.5), inset  4em 5em 2em -2em rgba(255, 255, 210,1)";
+
+        daytimeBackgrond[0].style.transform = "translateX(110em)";
+        daytimeBackgrond[1].style.transform = "translateX(80em)";
+        daytimeBackgrond[2].style.transform = "translateX(50em)";
+        cloud.style.transform = "translateY(80em)";
+        cloudLight.style.transform = "translateY(80em)";
+        components.style.backgroundColor = "rgba(25,30,50,1)";
+
+        moon[0].style.opacity = "1";
+        moon[1].style.opacity = "1";
+        moon[2].style.opacity = "1";
+
+        stars.style.transform = "translateY(-62.5em)";
+        stars.style.opacity = "1";
+
+        changeTheme("dark");
+      }
+
+      isClicked = true;
+
+      setTimeout(function () {
+        isClicked = false;
+      }, 500);
+      isMoved = !isMoved;
+    };
+
+    mainButton.addEventListener("mousemove", function () {
+      if (isClicked) return;
+
+      if (isMoved) {
+        mainButton.style.transform = "translateX(100em)";
+        daytimeBackgrond[0].style.transform = "translateX(100em)";
+        daytimeBackgrond[1].style.transform = "translateX(73em)";
+        daytimeBackgrond[2].style.transform = "translateX(46em)";
+
+        star[0].style.top = "10em";
+        star[0].style.left = "36em";
+        star[1].style.top = "40em";
+        star[1].style.left = "87em";
+        star[2].style.top = "26em";
+        star[2].style.left = "16em";
+        star[3].style.top = "38em";
+        star[3].style.left = "63em";
+        star[4].style.top = "20.5em";
+        star[4].style.left = "72em";
+        star[5].style.top = "51.5em";
+        star[5].style.left = "35em";
+      } else {
+        mainButton.style.transform = "translateX(10em)";
+        daytimeBackgrond[0].style.transform = "translateX(10em)";
+        daytimeBackgrond[1].style.transform = "translateX(7em)";
+        daytimeBackgrond[2].style.transform = "translateX(4em)";
+
+        cloudList[0].style.right = "-24em";
+        cloudList[0].style.bottom = "10em";
+        cloudList[1].style.right = "-12em";
+        cloudList[1].style.bottom = "-27em";
+        cloudList[2].style.right = "17em";
+        cloudList[2].style.bottom = "-43em";
+        cloudList[3].style.right = "46em";
+        cloudList[3].style.bottom = "-39em";
+        cloudList[4].style.right = "70em";
+        cloudList[4].style.bottom = "-65em";
+        cloudList[5].style.right = "109em";
+        cloudList[5].style.bottom = "-54em";
+        cloudList[6].style.right = "-23em";
+        cloudList[6].style.bottom = "10em";
+        cloudList[7].style.right = "-11em";
+        cloudList[7].style.bottom = "-26em";
+        cloudList[8].style.right = "18em";
+        cloudList[8].style.bottom = "-42em";
+        cloudList[9].style.right = "47em";
+        cloudList[9].style.bottom = "-38em";
+        cloudList[10].style.right = "74em";
+        cloudList[10].style.bottom = "-64em";
+        cloudList[11].style.right = "110em";
+        cloudList[11].style.bottom = "-55em";
+      }
+    });
+
+    mainButton.addEventListener("mouseout", function () {
+      if (isClicked) {
+        return;
+      }
+      if (isMoved) {
+        mainButton.style.transform = "translateX(110em)";
+        daytimeBackgrond[0].style.transform = "translateX(110em)";
+        daytimeBackgrond[1].style.transform = "translateX(80em)";
+        daytimeBackgrond[2].style.transform = "translateX(50em)";
+
+        star[0].style.top = "11em";
+        star[0].style.left = "39em";
+        star[1].style.top = "39em";
+        star[1].style.left = "91em";
+        star[2].style.top = "26em";
+        star[2].style.left = "19em";
+        star[3].style.top = "37em";
+        star[3].style.left = "66em";
+        star[4].style.top = "21em";
+        star[4].style.left = "75em";
+        star[5].style.top = "51em";
+        star[5].style.left = "38em";
+      } else {
+        mainButton.style.transform = "translateX(0em)";
+        daytimeBackgrond[0].style.transform = "translateX(0em)";
+        daytimeBackgrond[1].style.transform = "translateX(0em)";
+        daytimeBackgrond[2].style.transform = "translateX(0em)";
+
+        cloudList[0].style.right = "-20em";
+        cloudList[0].style.bottom = "10em";
+        cloudList[1].style.right = "-10em";
+        cloudList[1].style.bottom = "-25em";
+        cloudList[2].style.right = "20em";
+        cloudList[2].style.bottom = "-40em";
+        cloudList[3].style.right = "50em";
+        cloudList[3].style.bottom = "-35em";
+        cloudList[4].style.right = "75em";
+        cloudList[4].style.bottom = "-60em";
+        cloudList[5].style.right = "110em";
+        cloudList[5].style.bottom = "-50em";
+        cloudList[6].style.right = "-20em";
+        cloudList[6].style.bottom = "10em";
+        cloudList[7].style.right = "-10em";
+        cloudList[7].style.bottom = "-25em";
+        cloudList[8].style.right = "20em";
+        cloudList[8].style.bottom = "-40em";
+        cloudList[9].style.right = "50em";
+        cloudList[9].style.bottom = "-35em";
+        cloudList[10].style.right = "75em";
+        cloudList[10].style.bottom = "-60em";
+        cloudList[11].style.right = "110em";
+        cloudList[11].style.bottom = "-50em";
+      }
+    });
+
+    const getRandomDirection = () => {
+      const directions = ["2em", "-2em"];
+      return directions[Math.floor(Math.random() * directions.length)];
+    };
+
+    const moveElementRandomly = (element) => {
+      const randomDirectionX = getRandomDirection();
+      const randomDirectionY = getRandomDirection();
+      element.style.transform = `translate(${randomDirectionX}, ${randomDirectionY})`;
+    };
+
+    const cloudSons = root.querySelectorAll(".cloud-son");
+    setInterval(() => {
+      cloudSons.forEach(moveElementRandomly);
+    }, 1000);
+
+    if (initTheme === "dark") {
+      components.onclick();
+    }
+  };
+
+  class ThemeButton extends HTMLElement {
+    constructor() {
+      super();
+      const initTheme = this.getAttribute("value") || "light";
+      const size = +this.getAttribute("size") || 3;
+      const shadow = this.attachShadow({ mode: "closed" });
+      const container = document.createElement("div");
+      container.setAttribute("class", "container");
+      container.setAttribute("style", `font-size: ${(size / 3).toFixed(2)}px`);
+      container.innerHTML =
+        '<div class="components"><div class="main-button"><div class="moon"></div><div class="moon"></div><div class="moon"></div></div><div class="daytime-backgrond"></div><div class="daytime-backgrond"></div><div class="daytime-backgrond"></div><div class="cloud"><div class="cloud-son"></div><div class="cloud-son"></div><div class="cloud-son"></div><div class="cloud-son"></div><div class="cloud-son"></div><div class="cloud-son"></div></div><div class="cloud-light"><div class="cloud-son"></div><div class="cloud-son"></div><div class="cloud-son"></div><div class="cloud-son"></div><div class="cloud-son"></div><div class="cloud-son"></div></div><div class="stars"><div class="star big"><div class="star-son"></div><div class="star-son"></div><div class="star-son"></div><div class="star-son"></div></div><div class="star big"><div class="star-son"></div><div class="star-son"></div><div class="star-son"></div><div class="star-son"></div></div><div class="star medium"><div class="star-son"></div><div class="star-son"></div><div class="star-son"></div><div class="star-son"></div></div><div class="star medium"><div class="star-son"></div><div class="star-son"></div><div class="star-son"></div><div class="star-son"></div></div><div class="star small"><div class="star-son"></div><div class="star-son"></div><div class="star-son"></div><div class="star-son"></div></div><div class="star small"><div class="star-son"></div><div class="star-son"></div><div class="star-son"></div><div class="star-son"></div></div></div></div>';
+      const style = document.createElement("style");
+      style.textContent =
+        "* { margin: 0; padding: 0; transition: 0.7s; } .container { width: 180em; height: 70em; display: inline-block; vertical-align: bottom; transform: translate3d(0, 0, 0); } .components{ position:fixed; width: 180em; height: 70em; background-color: rgba(70, 133, 192,1); border-radius: 100em; box-shadow: inset 0 0 5em 3em rgba(0, 0, 0, 0.5); overflow: hidden; transition: 0.7s; transition-timing-function: cubic-bezier( 0,0.5, 1,1); cursor: pointer; } .main-button{ margin: 7.5em 0 0 7.5em; width: 55em; height:55em; background-color: rgba(255, 195, 35,1); border-radius: 50%; box-shadow:3em 3em 5em rgba(0, 0, 0, 0.5), inset -3em -5em 3em -3em rgba(0, 0, 0, 0.5), inset 4em 5em 2em -2em rgba(255, 230, 80,1); transition: 1.0s; transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); } .moon{ position: absolute; background-color: rgba(150, 160, 180, 1); box-shadow:inset 0em 0em 1em 1em rgba(0, 0, 0, 0.3) ; border-radius: 50%; transition: 0.5s; opacity: 0; } .moon:nth-child(1){ top: 7.5em; left: 25em; width: 12.5em; height: 12.5em; } .moon:nth-child(2){ top: 20em; left: 7.5em; width: 20em; height: 20em; } .moon:nth-child(3){ top: 32.5em; left: 32.5em; width: 12.5em; height: 12.5em; } .daytime-backgrond { position: absolute; border-radius: 50%; transition: 1.0s; transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); } .daytime-backgrond:nth-child(2){ top: -20em; left: -20em; width: 110em; height:110em; background-color: rgba(255, 255, 255,0.2); z-index: -2; } .daytime-backgrond:nth-child(3){ top: -32.5em; left: -17.5em; width: 135em; height:135em; background-color: rgba(255, 255, 255,0.1); z-index: -3; } .daytime-backgrond:nth-child(4){ top: -45em; left: -15em; width: 160em; height:160em; background-color: rgba(255, 255, 255,0.05); z-index: -4; } .cloud,.cloud-light{ transform: translateY(10em); transition: 1.0s; transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); } .cloud-son{ position: absolute; background-color: #fff; border-radius: 50%; z-index: -1; transition: transform 6s,right 1s,bottom 1s; } .cloud-son:nth-child(6n+1){ right: -20em; bottom: 10em; width: 50em; height: 50em; } .cloud-son:nth-child(6n+2) { right: -10em; bottom: -25em; width: 60em; height: 60em; } .cloud-son:nth-child(6n+3) { right: 20em; bottom: -40em; width: 60em; height: 60em; } .cloud-son:nth-child(6n+4) { right: 50em; bottom: -35em; width: 60em; height: 60em; } .cloud-son:nth-child(6n+5) { right: 75em; bottom: -60em; width: 75em; height: 75em; } .cloud-son:nth-child(6n+6) { right: 110em; bottom: -50em; width: 60em; height: 60em; } .cloud{ z-index: -2; } .cloud-light{ position: absolute; right: 0em; bottom: 25em; opacity: 0.5; z-index: -3; /*transform: rotate(-5deg);*/ } .stars{ transform: translateY(-125em); z-index: -2; transition: 1.0s; transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); } .big { --size: 7.5em; } .medium { --size: 5em; } .small { --size: 3em; } .star { position: absolute; width: calc(2*var(--size)); height: calc(2*var(--size)); } .star:nth-child(1){ top: 11em; left: 39em; animation-name: star; animation-duration: 3.5s; } .star:nth-child(2){ top: 39em; left: 91em; animation-name: star; animation-duration: 4.1s; } .star:nth-child(3){ top: 26em; left: 19em; animation-name: star; animation-duration: 4.9s; } .star:nth-child(4){ top: 37em; left: 66em; animation-name: star; animation-duration: 5.3s; } .star:nth-child(5){ top: 21em; left: 75em; animation-name: star; animation-duration: 3s; } .star:nth-child(6){ top: 51em; left: 38em; animation-name: star; animation-duration: 2.2s; } @keyframes star { 0%,20%{ transform: scale(0); } 20%,100% { transform: scale(1); } } .star-son{ float: left; } .star-son:nth-child(1) { --pos: left 0; } .star-son:nth-child(2) { --pos: right 0; } .star-son:nth-child(3) { --pos: 0 bottom; } .star-son:nth-child(4) { --pos: right bottom; } .star-son { width: var(--size); height: var(--size); background-image: radial-gradient(circle var(--size) at var(--pos), transparent var(--size), #fff); } .star{ transform: scale(1); transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); transition: 1s; animation-iteration-count:infinite; animation-direction: alternate; animation-timing-function: linear; } .twinkle { transform: scale(0); }";
+      const changeTheme = (detail) => {
+        this.dispatchEvent(new CustomEvent("change", { detail }));
+      };
+      func(container, initTheme, changeTheme);
+      shadow.appendChild(style);
+      shadow.appendChild(container);
+    }
   }
-  // 黑夜关闭云朵定时器
-  // clearInterval(cloudTimer);
-  // 检测鼠标是否点击,默认已经点击
-  isClicked = true;
-  // 计时器，当0.5秒后，点击状态变成非点击
-  setTimeout(function() {
-    isClicked = false;
-  }, 500);
-  isMoved = !isMoved;
-});
 
-// 当鼠标挪入按钮时，按钮移动事件
-mainButton.addEventListener("mousemove", function() {
-  // 当按钮为点击状态时，退出
-  if (isClicked) return;
-
-  if (isMoved) {
-    // 当黑夜状态时，鼠标挪入按钮
-    // 按钮和背后的虚影向左平移10像素 
-    mainButton.style.transform = "translateX(100px)";
-    daytimeBackgrond[0].style.transform = "translateX(100px)";
-    daytimeBackgrond[1].style.transform = "translateX(73px)";
-    daytimeBackgrond[2].style.transform = "translateX(46px)";
-    // 星星向外扩散
-    star[0].style.top = "10px";
-    star[0].style.left = "36px";
-    star[1].style.top = "40px";
-    star[1].style.left = "87px";
-    star[2].style.top = "26px";
-    star[2].style.left = "16px";
-    star[3].style.top = "38px";
-    star[3].style.left = "63px";
-    star[4].style.top = "20.5px";
-    star[4].style.left = "72px";
-    star[5].style.top = "51.5px";
-    star[5].style.left = "35px";
-    // star[1].style.transform = "translate(-4px,1px)";
-    // star[2].style.transform = "translate(-3px,0px)";
-    // star[3].style.transform = "translate(-3px,1px)";
-    // star[4].style.transform = "translate(-3px,-0.5px)";
-    // star[5].style.transform = "translate(-3px,0.5px)";
-  } else {
-    // 当白天状态时，鼠标挪入按钮
-    // 按钮和背后的虚影向右平移10像素 
-    mainButton.style.transform = "translateX(10px)";
-    daytimeBackgrond[0].style.transform = "translateX(10px)";
-    daytimeBackgrond[1].style.transform = "translateX(7px)";
-    daytimeBackgrond[2].style.transform = "translateX(4px)";
-    // 云层外扩
-    cloudList[0].style.right = "-24px";
-    cloudList[0].style.bottom = "10px";
-    cloudList[1].style.right = "-12px";
-    cloudList[1].style.bottom = "-27px";
-    cloudList[2].style.right = "17px";
-    cloudList[2].style.bottom = "-43px";
-    cloudList[3].style.right = "46px";
-    cloudList[3].style.bottom = "-39px";
-    cloudList[4].style.right = "70px";
-    cloudList[4].style.bottom = "-65px";
-    cloudList[5].style.right = "109px";
-    cloudList[5].style.bottom = "-54px";
-    cloudList[6].style.right = "-23px";
-    cloudList[6].style.bottom = "10px";
-    cloudList[7].style.right = "-11px";
-    cloudList[7].style.bottom = "-26px";
-    cloudList[8].style.right = "18px";
-    cloudList[8].style.bottom = "-42px";
-    cloudList[9].style.right = "47px";
-    cloudList[9].style.bottom = "-38px";
-    cloudList[10].style.right = "74px";
-    cloudList[10].style.bottom = "-64px";
-    cloudList[11].style.right = "110px";
-    cloudList[11].style.bottom = "-55px";
-  }
-});
-
-// 当鼠标挪出按钮时，按钮移动事件
-mainButton.addEventListener("mouseout", function() {
-  // 当按钮为点击状态时，退出
-  if (isClicked) { return };
-  if (isMoved) {
-    // 当黑夜状态时，鼠标挪出按钮
-    // 按钮和背后的虚影向右平移10像素 
-    mainButton.style.transform = "translateX(110px)";
-    daytimeBackgrond[0].style.transform = "translateX(110px)";
-    daytimeBackgrond[1].style.transform = "translateX(80px)";
-    daytimeBackgrond[2].style.transform = "translateX(50px)";
-    // 星星归位
-    star[0].style.top = "11px";
-    star[0].style.left = "39px";
-    star[1].style.top = "39px";
-    star[1].style.left = "91px";
-    star[2].style.top = "26px";
-    star[2].style.left = "19px";
-    star[3].style.top = "37px";
-    star[3].style.left = "66px";
-    star[4].style.top = "21px";
-    star[4].style.left = "75px";
-    star[5].style.top = "51px";
-    star[5].style.left = "38px";
-  } else {
-    // 当白天状态时，鼠标挪出按钮
-    // 按钮和背后的虚影向左平移10像素 
-    mainButton.style.transform = "translateX(0px)";
-    daytimeBackgrond[0].style.transform = "translateX(0px)";
-    daytimeBackgrond[1].style.transform = "translateX(0px)";
-    daytimeBackgrond[2].style.transform = "translateX(0px)";
-    // 云层归位
-    cloudList[0].style.right = "-20px";
-    cloudList[0].style.bottom = "10px";
-    cloudList[1].style.right = "-10px";
-    cloudList[1].style.bottom = "-25px";
-    cloudList[2].style.right = "20px";
-    cloudList[2].style.bottom = "-40px";
-    cloudList[3].style.right = "50px";
-    cloudList[3].style.bottom = "-35px";
-    cloudList[4].style.right = "75px";
-    cloudList[4].style.bottom = "-60px";
-    cloudList[5].style.right = "110px";
-    cloudList[5].style.bottom = "-50px";
-    cloudList[6].style.right = "-20px";
-    cloudList[6].style.bottom = "10px";
-    cloudList[7].style.right = "-10px";
-    cloudList[7].style.bottom = "-25px";
-    cloudList[8].style.right = "20px";
-    cloudList[8].style.bottom = "-40px";
-    cloudList[9].style.right = "50px";
-    cloudList[9].style.bottom = "-35px";
-    cloudList[10].style.right = "75px";
-    cloudList[10].style.bottom = "-60px";
-    cloudList[11].style.right = "110px";
-    cloudList[11].style.bottom = "-50px";
-  }
-});
-
-// 星星闪烁js交互部分
-// 获取所有星星元素，并随机排序星星数组
-// let starArray = [...$('.star')].sort(_ => 0.5 - Math.random());
-
-// // 定义缩放动画时长和暂停时间
-// const twinkleDuration = 0.5; // 缩放动画时长（秒）
-// const pauseDuration = 2; // 暂停时间（秒）
-
-// function twinkleStars() { 
-//   starArray.forEach((star, index) => {
-//     setTimeout(() => {
-//       star.classList.add('twinkle');
-//       setTimeout(() => {
-//         star.classList.remove('twinkle');
-//         if (index === starArray.length - 1) {
-//           setTimeout(twinkleStars, pauseDuration * 1000); // 在每次调用之间添加 2 秒的间隔
-//         }
-//       }, twinkleDuration * 1000);
-//     }, (index * (twinkleDuration + pauseDuration)) * 1000);
-//   });
-// }
-
-// twinkleStars(); // 第一次调用函数开始闪烁
-
-// 云层浮动动画效果
-// 定义一个获取随机方向的函数，随机选择'2px'或'-2px'
-const getRandomDirection = () => {
-  const directions = ['2px', '-2px'];
-  return directions[Math.floor(Math.random() * directions.length)];
-}
-
-// 定义一个将元素移动到随机方向的函数
-const moveElementRandomly = (element) => {
-  const randomDirectionX = getRandomDirection(); // 获取随机的X方向
-  const randomDirectionY = getRandomDirection(); // 获取随机的Y方向
-  element.style.transform = `translate(${randomDirectionX}, ${randomDirectionY})`; // 将随机方向应用到元素的transform属性
-}
-
-// 在文档加载完成后执行以下代码
-document.addEventListener('DOMContentLoaded', () => {
-  openOrCloseTime(cloudTimer)
-});
-
-// 每秒钟执行一次以下代码
-const cloudSons = document.querySelectorAll('.cloud-son'); // 选择所有的.cloud-son元素
-let cloudTimer =setInterval(() => {
-  cloudSons.forEach(moveElementRandomly); // 将每一个.cloud-son元素移动到随机方向
-}, 1000);
-
-
-
-
-
-
+  customElements.define("theme-button", ThemeButton);
+})();

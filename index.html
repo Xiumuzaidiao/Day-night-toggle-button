@@ -1,83 +1,22 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title></title>
-		<link rel="stylesheet" href="./css/style.css">
-	</head>
-	<body>
-		<div class="components">
-			<!-- 组件所有元素 -->
-			<div class="main-button">
-				<!-- 按钮主体(圆) -->
-				<div class="moon"></div>
-				<div class="moon"></div>
-				<div class="moon"></div>
-				<!-- 月亮上的陨石坑 -->
-			</div>
-			<div class="daytime-backgrond"></div>
-			<div class="daytime-backgrond"></div>
-			<div class="daytime-backgrond"></div>
-			<!-- 按钮底层的三个虚影 -->
-			<div class="cloud">
-				<!-- 所有的云 -->
-				<div class="cloud-son"></div>
-				<div class="cloud-son"></div>
-				<div class="cloud-son"></div>
-				<div class="cloud-son"></div>
-				<div class="cloud-son"></div>
-				<div class="cloud-son"></div>
-			</div>
-			<div class="cloud-light">
-				<!-- 云的虚影 -->
-				<div class="cloud-son"></div>
-				<div class="cloud-son"></div>
-				<div class="cloud-son"></div>
-				<div class="cloud-son"></div>
-				<div class="cloud-son"></div>
-				<div class="cloud-son"></div>
-			</div>
-			<div class="stars">
-				<!-- 所有星星，每一个星星由四个div拼合而成 -->
-				<div class="star big">
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-				</div>
-				<div class="star big">
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-				</div>
-				<div class="star medium">
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-				</div>
-				<div class="star medium">
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-				</div>
-				<div class="star small">
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-				</div>
-				<div class="star small">
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-					<div class="star-son"></div>
-				</div>
-			</div>
-		</div>
-		
-		<script src="js/script.js"></script>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <theme-button value="dark" id="btn" size="3"></theme-button>
+    <script>
+      document.body.style.backgroundColor = "#424242";
+      btn.addEventListener("change", e => {
+        if (e.detail === 'dark') {
+          document.body.style.backgroundColor = "#424242";
+        }
+        else {
+          document.body.style.backgroundColor = "aliceblue";
+        }
+      });
+    </script>
+    <script src="js/script.js"></script>
+  </body>
 </html>
