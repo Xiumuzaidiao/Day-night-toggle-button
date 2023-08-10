@@ -20,13 +20,13 @@
 
 #### 新增浏览器插件
 
-![Extension Program1](img/Extension Program1.png)
+![Extension Program1](img/ExtensionProgram1.png)
 
-![Extension Program2](img/Extension Program2.png)
+![Extension Program2](img/ExtensionProgram2.png)
 
-![Extension Program3](img/Extension Program3.png)
+![Extension Program3](img/ExtensionProgram3.png)
 
-![Extension Program4](img/Extension Program4.png)
+![Extension Program4](img/ExtensionProgram4.png)
 
 
 
@@ -38,5 +38,5 @@
 
 #### 最后启动插件即可
 
-![Extension Program4](img/Extension Program4.png)
+![Extension Program4](img/ExtensionProgram4.png)
 
