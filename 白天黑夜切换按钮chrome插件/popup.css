@@ -1,0 +1,80 @@
+body{
+	background: linear-gradient(220.55deg, #7CF7FF 0%, #4B73FF 100%);
+}
+
+.color-btn {
+  padding: 20px;
+  width: 300px;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+}
+
+.color-btn>p{
+	width: 300px;
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+	color: #f5f5f7;
+	text-shadow: 1px 1px 3px #999;
+}
+
+.module{
+	width: 300px;
+    height: 60px;
+	border-radius: 15px;
+	display: flex;
+	justify-content: space-around;
+	transition: 0.7s;
+	margin: 15px 0;
+}
+
+.module:hover{
+	background-color: rgba(255, 255, 255, 0.6);
+	transition: 0.7s;
+}
+
+.module p,.module span{
+	font-size: 18px;
+	color: #f5f5f7;
+	font-weight: bold;
+	transition: 0.7s;
+}
+
+.module:hover p,.module:hover span{
+	transition: 0.7s;
+	color: #424242;
+}
+
+.module-top{
+	cursor: pointer;
+}
+
+.module-bottom p:nth-child(1){
+	padding: 0px 10px;
+	transition: 0.7s;
+	border-radius: 15px;
+	cursor: pointer;
+}
+
+.module-bottom p:nth-child(1):hover{
+	background-color: rgba(0, 0, 0, 0.3);
+	color: #f5f5f7;
+	transition: 0.7s;
+}
+
+.position{
+	margin-top: 16.5px;
+}
+
+.position input{
+	width: 30px;
+	height: 20px;
+	transform: translateY(-2px);
+	border:0px;
+}
+
+.color-btn.current {
+  box-shadow: 0 0 0 2px white,
+              0 0 0 4px black;
+}

@@ -1,0 +1,318 @@
+*{
+	margin: 0;
+	padding: 0;
+	transition: 0.7s;
+}
+
+body{
+	background-color: aliceblue;/* 白天默认背景颜色 */
+}
+
+/* 最外层元素样式 */
+.components{
+	position:fixed;/* 固定定位 */
+	top: 50%;
+	left:50%;
+	margin-left:-90px;
+	margin-top: -35px;/* 按钮在页面中居中 */
+	width: 180px;
+	height: 70px;
+	background-color: rgba(70, 133, 192,1);/* 按钮背景颜色 */
+	border-radius: 100px;
+	box-shadow: inset 0 0 5px 3px rgba(0, 0, 0, 0.5);/* 按钮的内阴影,实现立体感 */
+	overflow: hidden;
+	transition: 0.7s;
+	transition-timing-function: cubic-bezier( 0,0.5, 1,1);/* 过渡时间贝塞尔曲线,实现非线性动画 */
+}
+
+/* 主要按钮样式 */
+.main-button{
+	margin: 7.5px 0 0 7.5px;
+	width: 55px;
+	height:55px;
+	background-color: rgba(255, 195, 35,1);
+	border-radius: 50%;
+	box-shadow:3px 3px 5px rgba(0, 0, 0, 0.5), inset  -3px -5px 3px -3px rgba(0, 0, 0, 0.5), inset  4px 5px 2px -2px rgba(255, 230, 80,1);
+	cursor: pointer;
+	transition: 1.0s;
+	transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); /* 加入回弹动画 */
+}
+
+/* 陨石坑样式 */
+.moon{
+	position: absolute;
+	background-color: rgba(150, 160, 180, 1);
+	box-shadow:inset 0px 0px 1px 1px rgba(0, 0, 0, 0.3) ;
+	border-radius: 50%;
+	transition: 0.5s;
+	opacity: 0;
+}
+
+/* 第一个陨石坑 */
+.moon:nth-child(1){
+	top: 7.5px;
+	left: 25px;
+	width: 12.5px;
+	height: 12.5px;
+}
+
+/* 第二个陨石坑 */
+.moon:nth-child(2){
+	top: 20px;
+	left: 7.5px;
+	width: 20px;
+	height: 20px;
+}
+
+/* 第三个陨石坑 */
+.moon:nth-child(3){
+	top: 32.5px;
+	left: 32.5px;
+	width: 12.5px;
+	height: 12.5px;
+}
+
+/* 按钮背后的虚影 */
+.daytime-backgrond {
+	position: absolute;
+	border-radius: 50%;
+	transition: 1.0s;
+	transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); /* 加入回弹动画 */
+}
+
+/* 按钮背后的第一个虚影 */
+.daytime-backgrond:nth-child(2){
+	top: -20px;
+	left: -20px;
+	width: 110px;
+	height:110px;
+	background-color: rgba(255, 255, 255,0.2);
+	z-index: -2;
+}
+
+/* 按钮背后的第二个虚影 */
+.daytime-backgrond:nth-child(3){
+	top: -32.5px;
+	left: -17.5px;
+	width: 135px;
+	height:135px;
+	background-color: rgba(255, 255, 255,0.1);
+	z-index: -3;
+}
+
+/* 按钮背后的第三个虚影 */
+.daytime-backgrond:nth-child(4){
+	top: -45px;
+	left: -15px;
+	width: 160px;
+	height:160px;
+	background-color: rgba(255, 255, 255,0.05);
+	z-index: -4;
+}
+
+/* 云和云层虚影的初始位置 */
+.cloud,.cloud-light{
+	transform: translateY(10px);
+	transition: 1.0s;
+	transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); /* 加入回弹动画 */
+}
+
+/* 云和虚影统一样式 */
+.cloud-son{
+	position: absolute;
+	background-color: #fff;
+	border-radius: 50%;
+	z-index: -1;
+	transition-property: transform;
+	transition-duration: 6s; /* 云层浮动动画效果，过渡时间6s */
+}
+
+
+/* 云和虚影由6个圆形组成，第1个圆形和第7个圆形大小相同 */
+.cloud-son:nth-child(6n+1){
+	right: -20px;
+	bottom: 10px;
+	width: 50px;
+	height: 50px;
+}
+
+/* 云和虚影由6个圆形组成，第2个圆形和第8个圆形大小相同 */
+.cloud-son:nth-child(6n+2) {
+	right: -10px;
+	bottom: -25px;
+	width: 60px;
+	height: 60px;
+}
+
+/* 云和虚影由6个圆形组成，第3个圆形和第9个圆形大小相同 */
+.cloud-son:nth-child(6n+3) {
+	right: 20px;
+	bottom: -40px;
+	width: 60px;
+	height: 60px;
+}
+
+/* 云和虚影由6个圆形组成，第4个圆形和第10个圆形大小相同 */
+.cloud-son:nth-child(6n+4) {
+	right: 50px;
+	bottom: -35px;
+	width: 60px;
+	height: 60px;
+}
+
+/* 云和虚影由6个圆形组成，第5个圆形和第11个圆形大小相同 */
+.cloud-son:nth-child(6n+5) {
+	right: 75px;
+	bottom: -60px;
+	width: 75px;
+	height: 75px;
+}
+
+/* 云和虚影由6个圆形组成，第6个圆形和第12个圆形大小相同 */
+.cloud-son:nth-child(6n+6) {
+	right: 110px;
+	bottom: -50px;
+	width: 60px;
+	height: 60px;
+}
+
+/* 云层在-2层 */
+.cloud{
+	z-index: -2;
+}
+
+/* 云层虚影在云层下方,并且整体上移,逆时针旋转5度 */
+.cloud-light{
+	position: absolute;
+	right: 0px;
+	bottom: 25px;
+	opacity: 0.5;
+	z-index: -3;
+	/*transform: rotate(-5deg);*/
+}
+
+
+/* 所有星星样式 */
+.stars{
+	transform: translateY(-125px);
+	z-index: -2;
+	transition: 1.0s;
+	transition-timing-function: cubic-bezier(0.56, 1.35, 0.52, 1.00); /* 加入回弹动画 */
+}
+
+/* 大星星的宽高 */
+.big {
+	--size: 7.5px;
+}
+
+/* 中星星的宽高 */
+.medium {
+	--size: 5px;
+}
+
+/* 小星星的宽高 */
+.small {
+	--size: 3px;
+}
+
+/* 星星绝对定位 */
+.star {
+	position: absolute;
+	width: calc(2*var(--size));
+	height: calc(2*var(--size));
+}
+
+/* 所有星星的位置 */
+.star:nth-child(1){
+	top: 10px;
+	left: 40px;	
+}
+
+.star:nth-child(2){
+	top: 20px;
+	left: 95px;	
+}
+
+.star:nth-child(3){
+	top: 20px;
+	left: 20px;	
+}
+
+.star:nth-child(4){
+	top: 35px;
+	left: 50px;	
+}
+
+.star:nth-child(5){
+	top: 50px;
+	left: 80px;	
+}
+
+.star:nth-child(6){
+	top: 50px;
+	left: 20px;	
+}
+
+.star:nth-child(7){
+	top: 40px;
+	left: 27.5px;	
+}
+
+.star:nth-child(8){
+	top: 55px;
+	left: 45px;	
+}
+
+.star:nth-child(9){
+	top: 20px;
+	left: 75px;	
+}
+
+.star:nth-child(10){
+	top: 32.5px;
+	left: 67.5px;	
+}
+
+.star:nth-child(11){
+	top:40px;
+	left: 95px;	
+}
+
+/* 每一个星星由四个div向左浮动,拼合而成 */
+.star-son{
+	float: left;
+}
+
+.star-son:nth-child(1) {
+	--pos: left 0;
+}
+
+.star-son:nth-child(2) {
+	--pos: right 0;
+}
+
+.star-son:nth-child(3) {
+	--pos: 0 bottom;
+}
+
+.star-son:nth-child(4) {
+	--pos: right bottom;
+}
+
+/* 星星样式 */
+.star-son {
+	width: var(--size);
+	height: var(--size);
+	background-image: radial-gradient(circle var(--size) at var(--pos), transparent var(--size), #fff);
+}
+
+/* 将星星闪烁动画应用于所有的star元素 */
+.star{
+	transform: scale(1);
+    transition: transform 0.5s;
+}
+
+/* 添加星星闪烁动画 */
+.twinkle {
+     transform: scale(0);
+}
