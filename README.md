@@ -34,7 +34,7 @@
 
 #### 打开Google Chrome浏览器，点击右上角三个点，依次点击“扩展程序”=>"管理扩展程序"，然后打开开发者选项，再点击左上角加载已解压的扩展程序，选择插件所在的文件夹，然后点击“选择文件夹”
 
-![Extension Program5](img/Extension Program5.png)
+![Extension Program5](img/ExtensionProgram5.png)
 
 #### 最后启动插件即可
 
