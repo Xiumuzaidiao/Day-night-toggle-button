@@ -1,0 +1,11 @@
+{
+  "name": "day-night-toggle-button",
+  "version": "1.0.0",
+  "description": "A fancy button for dark mode switching",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Xiumuzaidiao (Repack by I_am_CJC)",
+  "license": "ISC"
+}
