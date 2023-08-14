@@ -15,7 +15,20 @@
     let star = $(".star");
     let isMoved = false;
     let isClicked = false;
-
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+      toggleThemeBasedOnSystem();
+    });
+    const toggleThemeBasedOnSystem = () => {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        if(!isMoved){
+          components.onclick();
+        }
+      } else {
+        if(isMoved){
+          components.onclick();
+        }
+      }
+    };
     components.onclick = () => {
       if (isMoved) {
         mainButton.style.transform = "translateX(0)";
