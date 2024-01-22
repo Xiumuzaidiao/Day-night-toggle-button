@@ -20,11 +20,11 @@
     });
     const toggleThemeBasedOnSystem = () => {
       if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        if(!isMoved){
+        if (!isMoved) {
           components.onclick();
         }
       } else {
-        if(isMoved){
+        if (isMoved) {
           components.onclick();
         }
       }
@@ -217,6 +217,8 @@
   class ThemeButton extends HTMLElement {
     constructor() {
       super();
+    }
+    connectedCallback() {
       const initTheme = this.getAttribute("value") || "light";
       const size = +this.getAttribute("size") || 3;
       const shadow = this.attachShadow({ mode: "closed" });
