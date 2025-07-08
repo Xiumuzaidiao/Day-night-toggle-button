@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>白天黑夜切换按钮</title>
+	<style>
+		body{
+			transition: 0.5s;
+		}
+	</style>
+  </head>
+  <body>
+    <theme-button value="dark" id="btn" size="3"></theme-button>
+    <script>
+      document.body.style.backgroundColor = "#424242";
+      btn.addEventListener("change", e => {
+        if (e.detail === 'dark') {
+          document.body.style.backgroundColor = "#424242";
+        }
+        else {
+          document.body.style.backgroundColor = "aliceblue";
+        }
+      });
+    </script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
