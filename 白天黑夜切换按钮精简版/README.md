@@ -8,7 +8,7 @@
 
 ## 博客引用文档
 
-- [好看的昼夜切换按钮](https://www.naokuo.top/posts/1c3b759a)
+- [好看的昼夜切换按钮(已失效)](https://www.naokuo.top/posts/1c3b759a)
 
 ## 更新
 
