@@ -26,5 +26,5 @@ import DayNightToggleButton from "day-night-toggle-button"
 customElements.define("toggle-button",DayNightToggleButton)
 
 ```
-
-# 有感而发，不保证可用性，另外size参数怎么调整的真的很迷惑
+# 可用性说明
+有感而发，不保证可用性，另外size参数怎么调整的真的很迷惑
