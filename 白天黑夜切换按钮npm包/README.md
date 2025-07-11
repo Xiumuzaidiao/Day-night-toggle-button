@@ -2,7 +2,7 @@
 
 # 安装
 
-在撰写本README时原作者尚未将其上传到[npmjs.org](https://npmjs.org)，~~或者说原作者根本不知道我在打包这玩意~~，所以目前只能通过本地安装。
+在撰写本README时原作者尚未将其上传到[npmjs.org](https://npmjs.org)，~~或者说根本不知道在打包这玩意~~，所以目前只能通过本地安装。
 
 ```
 git clone <URL of the responsitory>
@@ -27,4 +27,4 @@ customElements.define("toggle-button",DayNightToggleButton)
 
 ```
 # 可用性说明
-有感而发，不保证可用性，另外size参数怎么调整的真的很迷惑
+有感而发，不保证可用性，另外size参数怎么调整，目前原作者也不知道怎么调
