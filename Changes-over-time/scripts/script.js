@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Test Website | 测试网页</title>
-    <style>
-        body{
-            transition: 0.5s;
-        }
-    </style>
-  </head>
-  <body>
-    <theme-button value="" id="btn" size="3"></theme-button>
-    <script>
-      // 检测当前时间设置初始主题
+ // 检测当前时间设置初始主题
       const hours = new Date().getHours();
       const isDayTime = hours >= 6 && hours < 18; // 6am-6pm为白天
       
@@ -34,7 +20,3 @@
           document.body.style.backgroundColor = "aliceblue";
         }
       });
-    </script>
-    <script src="./scripts/script.js"></script>
-  </body>
-</html>
